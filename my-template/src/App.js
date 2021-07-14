@@ -1,20 +1,37 @@
 import React from 'react'; 
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NavbarTemplate from './components/NavbarTemplate'; 
-import RoutesTemplate from './components/RoutesTemplate'
+import RoutesTemplate from './components/RoutesTemplate';
+import { GeneralContext } from './context/GeneralContext';
 class App extends React.Component  {
+  static contextType = GeneralContext;
+  constructor(props){
+    super(props);
+    this.state = {
+      name: "Guest",
+      surname:"Guesty"
+    }
+  }
+
+  componentDidMount(){
+    let value = this.context
+    console.log("appjs")
+    console.log(value)
+    console.log("==============")
+  }
   render(){
     return (
-      <div className="App">
-        <Router>
+      <GeneralContext.Provider value={this.state}>
+        <div className="App">
           <NavbarTemplate />
           <main>
-            <RoutesTemplate/>
+            <Router>
+              <RoutesTemplate/>
+            </Router>
           </main>
-        </Router>
-      </div>
+        </div>
+      </GeneralContext.Provider>
     );
   }
   

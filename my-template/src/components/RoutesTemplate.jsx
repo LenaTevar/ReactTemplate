@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import Home from '../views/Home';
 import About from '../views/About'
 import FormTeamplate from '../views/FormTemplate'
